@@ -4,5 +4,5 @@
         php artisan serve
 
 ## Install Breeze For Multi Auth
-            composer require laravel/breeze --dev
-            php artisan breeze:install
+        composer require laravel/breeze --dev
+        php artisan breeze:install

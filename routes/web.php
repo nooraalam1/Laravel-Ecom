@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\FetchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('Nav.nav');
 });
+
+Route::get('/',[FetchController::class,'Fetch']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
