@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Commerce</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="">
@@ -15,8 +15,12 @@
         @if (Route::has('login'))
             <nav class="md:flex justify-center items-center gap-5">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="btn btn-neutral btn-outline">
-                        Dashboard
+                    <a href="{{ url('/dashboard') }}" class="btn btn-ghost">
+                        @auth
+                            <div class="text-sm font-medium">
+                                {{ auth()->user()->name ?? 'User' }}
+                            </div>
+                        @endauth
                     </a>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-neutral btn-outline">
