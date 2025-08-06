@@ -18,7 +18,7 @@
                     <a href="{{ url('/dashboard') }}" class="btn btn-ghost">
                         @auth
                             <div class="text-sm font-medium">
-                                {{ auth()->user()->name ?? 'User' }}
+                                Hi, {{ auth()->user()->name }}
                             </div>
                         @endauth
                     </a>
