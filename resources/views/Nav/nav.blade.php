@@ -18,7 +18,9 @@
             <a href="#" class="btn btn-neutral btn-outline">Home</a>
             <a href="#" class="btn btn-neutral btn-outline">Products</a>
             <a href="#" class="btn btn-neutral btn-outline">About</a>
-            <a href="#" class="btn btn-neutral btn-outline">Cart</a>
+            <a href="/cart" class="btn btn-neutral btn-outline">
+                Cart <span id="cart-count" class="ml-2 badge badge-sm badge-accent">0</span>
+            </a>
         </div>
 
         <!-- Welcome Blade Include -->
@@ -33,6 +35,13 @@
     <div class="p-4">
         @include('cards')
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cart-count').textContent = cart.length;
+    });
+</script>
 
 </body>
+
 </html>

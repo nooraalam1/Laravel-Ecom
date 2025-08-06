@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Nav.nav');
 });
+Route::get('/cart', function () {
+    return view('cart');
+});
 
 Route::get('/',[FetchController::class,'Fetch']);
 

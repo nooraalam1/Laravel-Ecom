@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="mt-4 flex gap-3">
-                    <a class="btn btn-accent w-1/2">Buy Now</a>
-                    <a class="btn w-1/2">
+                    <a class="btn btn-accent w-1/2" onclick="buyNow({{$product['id']}},'{{$product['title']}}')">Buy Now</a>
+                    <a class="btn w-1/2" onclick="addToCart({{$product['id']}},'{{$product['title']}}')">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                             stroke="currentColor" class="size-[1.2em]">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,3 +49,40 @@
         </div>
     @endforeach
 </div>
+
+<script>
+    function buyNow(id,title){
+        @auth
+            alert(title + ' - Proceeding to buy now.');
+            @else
+            alert('Please log in to buy this product.');
+            window.location.href = "{{ route('login') }}";
+        @endauth
+
+    }
+function addToCart(id, title) {
+    const product = {
+        id: id,
+        title: title
+    };
+
+    // Get existing cart or start with empty array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if product is already in cart
+    let exists = cart.find(item => item.id === id);
+    if (exists) {
+        alert('Product is already in the cart!');
+        return;
+    }
+
+    // Add new product to cart
+    cart.push(product);
+
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert('Added to Cart!');
+}
+
+</script>
